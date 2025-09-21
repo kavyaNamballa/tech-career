@@ -7,6 +7,7 @@ import com.learnings.tech_hub.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.hateoas.EntityModel;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
@@ -28,6 +29,12 @@ public class UserController {
     @GetMapping("/{id}")
     public UserDTO getUser(@PathVariable Long id) throws UserNotFoundException {
         return userService.getUserById(id);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Object> deleteUser(@PathVariable Long id) throws UserNotFoundException {
+        userService.deleteUserById(id);
+        return ResponseEntity.noContent().build();
     }
 
 }

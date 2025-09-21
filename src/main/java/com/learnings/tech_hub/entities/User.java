@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Getter
@@ -19,10 +19,10 @@ public class User {
     private Integer yearsOfExperience;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<UserSkill> skills;
+    private List<UserSkill> skills;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_saved_jobs", joinColumns=@JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "job_id"))
-    private Set<Job> savedJobs;
+    private List<Job> savedJobs;
 }
