@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @Repository
 public interface UserSkillRepository extends JpaRepository<UserSkill, Long> {
-    List<UserSkill> findByUserId(Long userId);
+    List<UserSkill> findAllByUserId(Long userId);
     Optional<UserSkill> findByUserIdAndSkillId(Long userId, Long skillId);
     void deleteByUserIdAndSkillIdIn(Long userId, Collection<Long> skillIds);
 }

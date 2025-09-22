@@ -2,7 +2,7 @@ package com.learnings.tech_hub.controller;
 
 import com.learnings.tech_hub.dtos.SkillDTO;
 import com.learnings.tech_hub.enums.UpsertMode;
-import com.learnings.tech_hub.exceptions.UserNotFoundException;
+import com.learnings.tech_hub.exceptions.ResourceNotFoundException;
 import com.learnings.tech_hub.service.UserSkillService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -19,20 +19,20 @@ public class UserSkillController {
     private final UserSkillService userSkillService;
 
     @GetMapping
-    public List<SkillDTO> getUserSkills(@PathVariable Long userId) throws UserNotFoundException {
+    public List<SkillDTO> getUserSkills(@PathVariable Long userId) throws ResourceNotFoundException {
         return userSkillService.getUserSkills(userId);
     }
 
     @PutMapping
     public ResponseEntity<List<SkillDTO>> replaceSkills(@PathVariable Long userId,
-                                                        @RequestBody @Valid List<@Valid SkillDTO> skills) throws UserNotFoundException {
+                                                        @RequestBody @Valid List<@Valid SkillDTO> skills) throws ResourceNotFoundException {
         List<SkillDTO> updated = userSkillService.upsertUserSkills(userId, skills, UpsertMode.REPLACE);
         return ResponseEntity.ok(updated);
     }
 
     @PostMapping
     public ResponseEntity<List<SkillDTO>> addOrUpdateSkills(@PathVariable Long userId,
-                                                            @RequestBody @Valid List<@Valid SkillDTO> skills) throws UserNotFoundException {
+                                                            @RequestBody @Valid List<@Valid SkillDTO> skills) throws ResourceNotFoundException {
         List<SkillDTO> updated = userSkillService.upsertUserSkills(userId, skills, UpsertMode.MERGE);
         return ResponseEntity.ok(updated);
     }

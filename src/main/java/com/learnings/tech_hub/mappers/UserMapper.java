@@ -28,9 +28,7 @@ public interface UserMapper {
     }
 
     default SkillDTO mapUserSkillToDTO(UserSkill userSkill) {
-        SkillDTO dto = new SkillDTO();
-        dto.setName(userSkill.getSkill().getName());
-        dto.setLevel(userSkill.getLevel());
+        SkillDTO dto = new SkillDTO(userSkill.getSkill().getName(), userSkill.getLevel());
         return dto;
     }
 }

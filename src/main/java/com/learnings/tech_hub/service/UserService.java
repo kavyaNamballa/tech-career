@@ -7,7 +7,7 @@ import com.learnings.tech_hub.entities.User;
 import com.learnings.tech_hub.entities.UserSkill;
 import com.learnings.tech_hub.enums.UpsertMode;
 import com.learnings.tech_hub.exceptions.UserAlreadyExistsException;
-import com.learnings.tech_hub.exceptions.UserNotFoundException;
+import com.learnings.tech_hub.exceptions.ResourceNotFoundException;
 import com.learnings.tech_hub.mappers.UserMapper;
 import com.learnings.tech_hub.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -43,18 +43,18 @@ public class UserService {
         return userMapper.toDTO(user);
     }
 
-    public UserDTO getUserById(Long id) throws UserNotFoundException {
+    public UserDTO getUserById(Long id) throws ResourceNotFoundException {
         User user = userRepository.findById(id).orElse(null);
         if (user == null) {
-            throw new UserNotFoundException("User not found");
+            throw new ResourceNotFoundException("User not found");
         }
         return userMapper.toDTO(user);
     }
 
-    public void deleteUserById(Long id) throws UserNotFoundException {
+    public void deleteUserById(Long id) throws ResourceNotFoundException {
         User user = userRepository.findById(id).orElse(null);
         if (user == null) {
-            throw new UserNotFoundException("User not found");
+            throw new ResourceNotFoundException("User not found");
         }
         userRepository.delete(user);
     }

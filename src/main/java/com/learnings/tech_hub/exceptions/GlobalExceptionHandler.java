@@ -19,8 +19,8 @@ public class GlobalExceptionHandler {
                 .body(new ErrorDetails(ex.getMessage(), LocalDateTime.now()));
     }
 
-    @ExceptionHandler(UserNotFoundException.class)
-    public ResponseEntity<?> handleUserAlreadyExistsException(UserNotFoundException ex) {
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<?> handleUserAlreadyExistsException(ResourceNotFoundException ex) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND)
                 .body(new ErrorDetails(ex.getMessage(), LocalDateTime.now()));
     }

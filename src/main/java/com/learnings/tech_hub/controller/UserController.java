@@ -2,7 +2,7 @@ package com.learnings.tech_hub.controller;
 
 import com.learnings.tech_hub.dtos.UserDTO;
 import com.learnings.tech_hub.exceptions.UserAlreadyExistsException;
-import com.learnings.tech_hub.exceptions.UserNotFoundException;
+import com.learnings.tech_hub.exceptions.ResourceNotFoundException;
 import com.learnings.tech_hub.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -20,19 +20,19 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping
-    public EntityModel<UserDTO> createUser(@RequestBody @Valid UserDTO userDTO) throws UserNotFoundException, UserAlreadyExistsException {
+    public EntityModel<UserDTO> createUser(@RequestBody @Valid UserDTO userDTO) throws ResourceNotFoundException, UserAlreadyExistsException {
         UserDTO user = userService.createUser(userDTO);
         return EntityModel.of(user,
                 linkTo(methodOn(this.getClass()).getUser(user.getId())).withRel("user"));
     }
 
     @GetMapping("/{id}")
-    public UserDTO getUser(@PathVariable Long id) throws UserNotFoundException {
+    public UserDTO getUser(@PathVariable Long id) throws ResourceNotFoundException {
         return userService.getUserById(id);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Object> deleteUser(@PathVariable Long id) throws UserNotFoundException {
+    public ResponseEntity<Object> deleteUser(@PathVariable Long id) throws ResourceNotFoundException {
         userService.deleteUserById(id);
         return ResponseEntity.noContent().build();
     }
