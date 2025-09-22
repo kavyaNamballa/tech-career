@@ -54,4 +54,15 @@ public class SkillService {
         }
         return toSave;
     }
+
+    @Transactional(readOnly = true)
+    public List<String> getAllSkills() {
+        List<Skill> skills = skillRepository.findAll();
+        return skills.stream().map(Skill::getName).toList();
+    }
+
+    @Transactional
+    public List<String> addSkills(List<String> skills) {
+        return saveOrGetSkills(skills.stream().map(SkillDTO::new).toList()).stream().map(Skill::getName).collect(Collectors.toList());
+    }
 }

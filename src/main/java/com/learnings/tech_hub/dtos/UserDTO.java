@@ -9,7 +9,7 @@ import java.util.List;
 public class UserDTO {
     private Long id;
 
-    @NotEmpty(message = "Name should not be empty")
+    @NotBlank(message = "Name should not be empty")
     private String name;
 
     @Email(message = "Email should be in correct format")
