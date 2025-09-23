@@ -1,4 +1,4 @@
-package com.learnings.tech_hub.entities;
+package com.learnings.tech_hub.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;

@@ -1,7 +1,7 @@
 package com.learnings.tech_hub.service;
 
-import com.learnings.tech_hub.dtos.SkillDTO;
-import com.learnings.tech_hub.entities.Skill;
+import com.learnings.tech_hub.dto.SkillDTO;
+import com.learnings.tech_hub.entity.Skill;
 import com.learnings.tech_hub.repository.SkillRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

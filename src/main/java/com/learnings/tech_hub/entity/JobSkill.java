@@ -1,8 +1,7 @@
-package com.learnings.tech_hub.entities;
+package com.learnings.tech_hub.entity;
 
 import com.learnings.tech_hub.enums.SkillLevel;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,19 +9,24 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@AllArgsConstructor
 @NoArgsConstructor
-public class UserSkill {
+public class JobSkill {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private User user;
+    @ManyToOne
+    private Job job;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     private Skill skill;
 
     @Enumerated(EnumType.STRING)
     private SkillLevel level;
+
+    public JobSkill(Job job, Skill skill, SkillLevel level) {
+        this.job = job;
+        this.skill = skill;
+        this.level = level;
+    }
 }

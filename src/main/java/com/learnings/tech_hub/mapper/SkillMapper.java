@@ -1,7 +1,7 @@
-package com.learnings.tech_hub.mappers;
+package com.learnings.tech_hub.mapper;
 
-import com.learnings.tech_hub.dtos.SkillDTO;
-import com.learnings.tech_hub.entities.Skill;
+import com.learnings.tech_hub.dto.SkillDTO;
+import com.learnings.tech_hub.entity.Skill;
 import org.mapstruct.Mapper;
 
 import java.util.List;

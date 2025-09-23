@@ -1,14 +1,15 @@
 package com.learnings.tech_hub.service;
 
-import com.learnings.tech_hub.dtos.SkillDTO;
-import com.learnings.tech_hub.dtos.UserDTO;
-import com.learnings.tech_hub.entities.Skill;
-import com.learnings.tech_hub.entities.User;
-import com.learnings.tech_hub.entities.UserSkill;
+import com.learnings.tech_hub.dto.RecommendationResponse;
+import com.learnings.tech_hub.dto.SkillDTO;
+import com.learnings.tech_hub.dto.UserDTO;
+import com.learnings.tech_hub.entity.Skill;
+import com.learnings.tech_hub.entity.User;
+import com.learnings.tech_hub.entity.UserSkill;
 import com.learnings.tech_hub.enums.UpsertMode;
-import com.learnings.tech_hub.exceptions.UserAlreadyExistsException;
-import com.learnings.tech_hub.exceptions.ResourceNotFoundException;
-import com.learnings.tech_hub.mappers.UserMapper;
+import com.learnings.tech_hub.exception.UserAlreadyExistsException;
+import com.learnings.tech_hub.exception.ResourceNotFoundException;
+import com.learnings.tech_hub.mapper.UserMapper;
 import com.learnings.tech_hub.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,7 @@ public class UserService {
     private final UserSkillService userSkillService;
     private final SkillService skillService;
     private final UserMapper userMapper;
+    private final RecommendationService recommendationService;
 
     @Transactional
     public UserDTO createUser(UserDTO userDTO) throws UserAlreadyExistsException {
@@ -44,7 +46,8 @@ public class UserService {
     }
 
     public UserDTO getUserById(Long id) throws ResourceNotFoundException {
-        User user = userRepository.findById(id).orElse(null);
+        User user = userRepository.findById(id).orElseThrow(() ->
+                new ResourceNotFoundException("User not found: "+id));
         if (user == null) {
             throw new ResourceNotFoundException("User not found");
         }
@@ -52,10 +55,17 @@ public class UserService {
     }
 
     public void deleteUserById(Long id) throws ResourceNotFoundException {
-        User user = userRepository.findById(id).orElse(null);
+        User user = userRepository.findById(id).orElseThrow(() ->
+                new ResourceNotFoundException("User not found: "+id));
         if (user == null) {
             throw new ResourceNotFoundException("User not found");
         }
         userRepository.delete(user);
+    }
+
+    public RecommendationResponse getRecommendations(Long id, int topN) throws ResourceNotFoundException {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("User not found: " + id));
+        return recommendationService.recommendForUser(user, topN);
     }
 }

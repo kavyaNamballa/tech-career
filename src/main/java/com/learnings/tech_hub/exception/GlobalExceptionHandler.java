@@ -1,4 +1,4 @@
-package com.learnings.tech_hub.exceptions;
+package com.learnings.tech_hub.exception;
 
 import org.springframework.context.support.DefaultMessageSourceResolvable;
 import org.springframework.http.HttpStatus;

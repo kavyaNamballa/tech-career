@@ -1,4 +1,4 @@
-package com.learnings.tech_hub.dtos;
+package com.learnings.tech_hub.dto;
 
 import jakarta.validation.constraints.*;
 import lombok.Data;

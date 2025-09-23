@@ -1,9 +1,9 @@
-package com.learnings.tech_hub.mappers;
+package com.learnings.tech_hub.mapper;
 
-import com.learnings.tech_hub.dtos.SkillDTO;
-import com.learnings.tech_hub.dtos.UserDTO;
-import com.learnings.tech_hub.entities.User;
-import com.learnings.tech_hub.entities.UserSkill;
+import com.learnings.tech_hub.dto.SkillDTO;
+import com.learnings.tech_hub.dto.UserDTO;
+import com.learnings.tech_hub.entity.User;
+import com.learnings.tech_hub.entity.UserSkill;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

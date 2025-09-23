@@ -1,8 +1,9 @@
 package com.learnings.tech_hub.controller;
 
-import com.learnings.tech_hub.dtos.UserDTO;
-import com.learnings.tech_hub.exceptions.UserAlreadyExistsException;
-import com.learnings.tech_hub.exceptions.ResourceNotFoundException;
+import com.learnings.tech_hub.dto.RecommendationResponse;
+import com.learnings.tech_hub.dto.UserDTO;
+import com.learnings.tech_hub.exception.UserAlreadyExistsException;
+import com.learnings.tech_hub.exception.ResourceNotFoundException;
 import com.learnings.tech_hub.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -39,4 +40,8 @@ public class UserController {
         return ResponseEntity.noContent().build();
     }
 
+    @GetMapping("/{userId}/recommendation/{topN}")
+    public RecommendationResponse  getRecommendation(@PathVariable Long userId, @PathVariable int topN) throws ResourceNotFoundException {
+        return userService.getRecommendations(userId, topN);
+    }
 }

@@ -1,4 +1,4 @@
-package com.learnings.tech_hub.dtos;
+package com.learnings.tech_hub.dto;
 
 import com.learnings.tech_hub.enums.SkillLevel;
 import jakarta.validation.constraints.NotBlank;

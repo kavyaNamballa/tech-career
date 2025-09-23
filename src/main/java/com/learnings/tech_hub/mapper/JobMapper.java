@@ -1,9 +1,9 @@
-package com.learnings.tech_hub.mappers;
+package com.learnings.tech_hub.mapper;
 
-import com.learnings.tech_hub.dtos.JobDTO;
-import com.learnings.tech_hub.dtos.SkillDTO;
-import com.learnings.tech_hub.entities.Job;
-import com.learnings.tech_hub.entities.JobSkill;
+import com.learnings.tech_hub.dto.JobDTO;
+import com.learnings.tech_hub.dto.SkillDTO;
+import com.learnings.tech_hub.entity.Job;
+import com.learnings.tech_hub.entity.JobSkill;
 import org.mapstruct.*;
 
 import java.util.List;

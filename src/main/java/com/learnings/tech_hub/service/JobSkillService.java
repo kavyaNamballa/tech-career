@@ -1,7 +1,7 @@
 package com.learnings.tech_hub.service;
 
-import com.learnings.tech_hub.dtos.SkillDTO;
-import com.learnings.tech_hub.entities.*;
+import com.learnings.tech_hub.dto.SkillDTO;
+import com.learnings.tech_hub.entity.*;
 import com.learnings.tech_hub.enums.SkillLevel;
 import com.learnings.tech_hub.repository.JobSkillRepository;
 import lombok.RequiredArgsConstructor;

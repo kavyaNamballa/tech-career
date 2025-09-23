@@ -1,7 +1,7 @@
 package com.learnings.tech_hub.controller;
 
-import com.learnings.tech_hub.dtos.JobDTO;
-import com.learnings.tech_hub.exceptions.ResourceNotFoundException;
+import com.learnings.tech_hub.dto.JobDTO;
+import com.learnings.tech_hub.exception.ResourceNotFoundException;
 import com.learnings.tech_hub.service.JobService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

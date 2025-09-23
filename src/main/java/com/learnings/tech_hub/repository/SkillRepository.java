@@ -1,6 +1,6 @@
 package com.learnings.tech_hub.repository;
 
-import com.learnings.tech_hub.entities.Skill;
+import com.learnings.tech_hub.entity.Skill;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

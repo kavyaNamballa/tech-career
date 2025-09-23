@@ -1,13 +1,13 @@
 package com.learnings.tech_hub.service;
 
-import com.learnings.tech_hub.dtos.SkillDTO;
-import com.learnings.tech_hub.entities.Skill;
-import com.learnings.tech_hub.entities.User;
-import com.learnings.tech_hub.entities.UserSkill;
+import com.learnings.tech_hub.dto.SkillDTO;
+import com.learnings.tech_hub.entity.Skill;
+import com.learnings.tech_hub.entity.User;
+import com.learnings.tech_hub.entity.UserSkill;
 import com.learnings.tech_hub.enums.SkillLevel;
 import com.learnings.tech_hub.enums.UpsertMode;
-import com.learnings.tech_hub.exceptions.ResourceNotFoundException;
-import com.learnings.tech_hub.mappers.UserMapper;
+import com.learnings.tech_hub.exception.ResourceNotFoundException;
+import com.learnings.tech_hub.mapper.UserMapper;
 import com.learnings.tech_hub.repository.UserRepository;
 import com.learnings.tech_hub.repository.UserSkillRepository;
 import lombok.RequiredArgsConstructor;

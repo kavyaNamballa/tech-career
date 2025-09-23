@@ -1,10 +1,10 @@
 package com.learnings.tech_hub.service;
 
-import com.learnings.tech_hub.dtos.JobDTO;
-import com.learnings.tech_hub.entities.Job;
-import com.learnings.tech_hub.entities.User;
-import com.learnings.tech_hub.exceptions.ResourceNotFoundException;
-import com.learnings.tech_hub.mappers.JobMapper;
+import com.learnings.tech_hub.dto.JobDTO;
+import com.learnings.tech_hub.entity.Job;
+import com.learnings.tech_hub.entity.User;
+import com.learnings.tech_hub.exception.ResourceNotFoundException;
+import com.learnings.tech_hub.mapper.JobMapper;
 import com.learnings.tech_hub.repository.JobRepository;
 import com.learnings.tech_hub.repository.UserRepository;
 import lombok.RequiredArgsConstructor;

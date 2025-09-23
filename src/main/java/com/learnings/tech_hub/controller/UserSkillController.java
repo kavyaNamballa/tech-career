@@ -1,8 +1,8 @@
 package com.learnings.tech_hub.controller;
 
-import com.learnings.tech_hub.dtos.SkillDTO;
+import com.learnings.tech_hub.dto.SkillDTO;
 import com.learnings.tech_hub.enums.UpsertMode;
-import com.learnings.tech_hub.exceptions.ResourceNotFoundException;
+import com.learnings.tech_hub.exception.ResourceNotFoundException;
 import com.learnings.tech_hub.service.UserSkillService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

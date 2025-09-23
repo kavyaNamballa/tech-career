@@ -1,4 +1,4 @@
-package com.learnings.tech_hub.entities;
+package com.learnings.tech_hub.entity;
 
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
@@ -21,8 +21,8 @@ public class Job {
     @Column(name = "salary_range")
     private String salaryRangeInLPA;
 
-    private String minExperience;
+    private Integer minExperience;
 
-    @OneToMany(mappedBy = "job", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "job", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<JobSkill> skills;
 }

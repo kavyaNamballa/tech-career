@@ -1,12 +1,12 @@
 package com.learnings.tech_hub.service;
 
-import com.learnings.tech_hub.dtos.JobDTO;
-import com.learnings.tech_hub.dtos.SkillDTO;
-import com.learnings.tech_hub.entities.Job;
-import com.learnings.tech_hub.entities.JobSkill;
-import com.learnings.tech_hub.entities.Skill;
-import com.learnings.tech_hub.exceptions.ResourceNotFoundException;
-import com.learnings.tech_hub.mappers.JobMapper;
+import com.learnings.tech_hub.dto.JobDTO;
+import com.learnings.tech_hub.dto.SkillDTO;
+import com.learnings.tech_hub.entity.Job;
+import com.learnings.tech_hub.entity.JobSkill;
+import com.learnings.tech_hub.entity.Skill;
+import com.learnings.tech_hub.exception.ResourceNotFoundException;
+import com.learnings.tech_hub.mapper.JobMapper;
 import com.learnings.tech_hub.repository.JobRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
