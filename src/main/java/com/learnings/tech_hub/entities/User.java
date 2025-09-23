@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -24,5 +25,5 @@ public class User {
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "user_saved_jobs", joinColumns=@JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "job_id"))
-    private List<Job> savedJobs;
+    private Set<Job> savedJobs;
 }

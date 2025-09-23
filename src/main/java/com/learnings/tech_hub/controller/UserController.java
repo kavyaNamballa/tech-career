@@ -7,6 +7,7 @@ import com.learnings.tech_hub.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.hateoas.EntityModel;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -20,6 +21,7 @@ public class UserController {
     private final UserService userService;
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public EntityModel<UserDTO> createUser(@RequestBody @Valid UserDTO userDTO) throws ResourceNotFoundException, UserAlreadyExistsException {
         UserDTO user = userService.createUser(userDTO);
         return EntityModel.of(user,
