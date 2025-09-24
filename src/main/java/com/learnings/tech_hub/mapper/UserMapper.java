@@ -20,6 +20,8 @@ public interface UserMapper {
     @Mapping(target = "skills", source = "skills")
     UserDTO toDTO(User user);
 
+    List<UserDTO> toDTOs(List<User> users);
+
     default List<SkillDTO> mapUserSkills(List<UserSkill> userSkills) {
         if (userSkills == null) return new ArrayList<>();
         return userSkills.stream()

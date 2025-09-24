@@ -16,9 +16,10 @@ public class Job {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(length = 100, nullable = false)
     private String title;
 
-    @Column(name = "salary_range")
+    @Column(name = "salary_range", length = 50)
     private String salaryRangeInLPA;
 
     private Integer minExperience;

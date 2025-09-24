@@ -54,6 +54,11 @@ public class UserService {
         return userMapper.toDTO(user);
     }
 
+    public List<UserDTO> getAllUsers() {
+        List<User> users = userRepository.findAll();
+        return userMapper.toDTOs(users);
+    }
+
     public void deleteUserById(Long id) throws ResourceNotFoundException {
         User user = userRepository.findById(id).orElseThrow(() ->
                 new ResourceNotFoundException("User not found: "+id));

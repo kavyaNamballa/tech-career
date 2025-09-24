@@ -8,7 +8,6 @@ import com.learnings.tech_hub.entity.*;
 import com.learnings.tech_hub.enums.SkillLevel;
 import com.learnings.tech_hub.exception.ResourceNotFoundException;
 import com.learnings.tech_hub.repository.JobRepository;
-import com.learnings.tech_hub.repository.UserRepository;
 import com.learnings.tech_hub.util.RecommendationUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -19,7 +18,6 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 public class RecommendationService {
-    private final UserRepository userRepository;
     private final JobRepository jobRepository;
     private final RecommendationUtil recommendationUtil;
 
