@@ -16,13 +16,13 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(UserAlreadyExistsException.class)
     public ResponseEntity<?> handleUserAlreadyExistsException(UserAlreadyExistsException ex) {
         return ResponseEntity.status(HttpStatus.CONFLICT)
-                .body(new ErrorDetails(ex.getMessage(), LocalDateTime.now()));
+                .body(new ErrorDetails(ex.getMessage(), LocalDateTime.now(), HttpStatus.CONFLICT));
     }
 
     @ExceptionHandler(ResourceNotFoundException.class)
     public ResponseEntity<?> handleUserAlreadyExistsException(ResourceNotFoundException ex) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                .body(new ErrorDetails(ex.getMessage(), LocalDateTime.now()));
+                .body(new ErrorDetails(ex.getMessage(), LocalDateTime.now(), HttpStatus.NOT_FOUND));
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
@@ -30,9 +30,9 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(new ErrorDetails(ex.getFieldErrors()
                 .parallelStream()
                 .map(DefaultMessageSourceResolvable::getDefaultMessage)
-                .collect(Collectors.joining(", ")), LocalDateTime.now()), HttpStatus.BAD_REQUEST);
+                .collect(Collectors.joining(", ")), LocalDateTime.now(), HttpStatus.BAD_REQUEST), HttpStatus.BAD_REQUEST);
 
     }
 }
 
-record ErrorDetails (String message, LocalDateTime timestamp) {}
+record ErrorDetails (String message, LocalDateTime timestamp, HttpStatus status) {}
