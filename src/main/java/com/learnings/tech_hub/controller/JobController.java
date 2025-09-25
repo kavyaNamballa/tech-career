@@ -3,6 +3,7 @@ package com.learnings.tech_hub.controller;
 import com.learnings.tech_hub.dto.JobDTO;
 import com.learnings.tech_hub.exception.ResourceNotFoundException;
 import com.learnings.tech_hub.service.JobService;
+import com.learnings.tech_hub.specification.JobSearchCriteria;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -24,8 +25,12 @@ public class JobController {
     }
 
     @GetMapping
-    public ResponseEntity<List<JobDTO>> getAllJobs() {
-        return ResponseEntity.ok(jobService.getAllJobs());
+    public ResponseEntity<List<JobDTO>> getAllJobs(@RequestParam(required = false) String title,
+                                                   @RequestParam(required = false) Integer minExp,
+                                                   @RequestParam(required = false) Integer maxExp,
+                                                   @RequestParam(required = false) Double salary) {
+        JobSearchCriteria searchCriteria = new JobSearchCriteria(title, salary, maxExp, minExp);
+        return ResponseEntity.ok(jobService.getAllJobs(searchCriteria));
     }
 
     @DeleteMapping("/{id}")

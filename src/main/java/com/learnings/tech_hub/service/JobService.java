@@ -8,8 +8,12 @@ import com.learnings.tech_hub.entity.Skill;
 import com.learnings.tech_hub.exception.ResourceNotFoundException;
 import com.learnings.tech_hub.mapper.JobMapper;
 import com.learnings.tech_hub.repository.JobRepository;
+import com.learnings.tech_hub.specification.JobSearchCriteria;
+import com.learnings.tech_hub.specification.JobSpecification;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,6 +21,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor(onConstructor_ = @Autowired)
+@Slf4j
 public class JobService {
     private final JobRepository jobRepository;
     private final SkillService skillService;
@@ -63,8 +68,31 @@ public class JobService {
         return jobMapper.toDTO(job);
     }
 
-    public List<JobDTO> getAllJobs() {
-        List<Job> jobs = jobRepository.findAll();
+    public List<JobDTO> getAllJobs(JobSearchCriteria  searchCriteria) {
+        Specification<Job> spec = JobSpecification.buildSpec(searchCriteria);
+        List<Job> jobs = jobRepository.findAll(spec);
+        var salaryCriteria = searchCriteria.getSalaryInLPA();
+        if (salaryCriteria != null) {
+            jobs = jobs.stream()
+                    .filter(job -> salaryInBetween(job.getSalaryRangeInLPA(), salaryCriteria))
+                    .toList();
+        }
         return jobMapper.toDTOs(jobs);
+    }
+
+    private boolean salaryInBetween(String salaryRange, Double salary) {
+        if (salaryRange == null) return false;
+        String rawSalaryRange = salaryRange.replaceAll("\\s*LPA\\s*$","");
+        String[] split = rawSalaryRange.split("-");
+        if (split.length != 2) return false;
+        try {
+            Double low = Double.parseDouble(split[0]);
+            Double upper = Double.parseDouble(split[1]);
+            if (salary < low || salary > upper) return false;
+        } catch (NumberFormatException e) {
+            log.error(e.getMessage());
+            return false;
+        }
+        return true;
     }
 }
