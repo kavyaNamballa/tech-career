@@ -4,6 +4,7 @@ import com.learnings.tech_hub.dto.SkillDTO;
 import com.learnings.tech_hub.enums.UpsertMode;
 import com.learnings.tech_hub.exception.ResourceNotFoundException;
 import com.learnings.tech_hub.service.UserSkillService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +15,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/users/{userId}/skills")
 @RequiredArgsConstructor
+@Tag(
+        name = "Adding or Updating User Skills API's"
+)
 public class UserSkillController {
 
     private final UserSkillService userSkillService;

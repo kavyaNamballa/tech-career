@@ -4,6 +4,7 @@ import com.learnings.tech_hub.dto.JobDTO;
 import com.learnings.tech_hub.exception.ResourceNotFoundException;
 import com.learnings.tech_hub.service.JobService;
 import com.learnings.tech_hub.specification.JobSearchCriteria;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -15,6 +16,9 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/jobs")
+@Tag(
+    name = "CRUD REST API's for jobs"
+)
 public class JobController {
     private final JobService jobService;
 

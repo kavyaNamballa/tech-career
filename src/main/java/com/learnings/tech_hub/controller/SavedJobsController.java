@@ -3,6 +3,7 @@ package com.learnings.tech_hub.controller;
 import com.learnings.tech_hub.dto.JobDTO;
 import com.learnings.tech_hub.exception.ResourceNotFoundException;
 import com.learnings.tech_hub.service.SavedJobsService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.http.HttpStatus;
@@ -16,6 +17,9 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/users/{userId}/saved-jobs")
+@Tag(
+        name = "Saving jobs for user REST API's"
+)
 public class SavedJobsController {
     private final SavedJobsService savedJobsService;
 

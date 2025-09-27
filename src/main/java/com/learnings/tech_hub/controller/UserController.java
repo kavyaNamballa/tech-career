@@ -5,6 +5,7 @@ import com.learnings.tech_hub.dto.UserDTO;
 import com.learnings.tech_hub.exception.UserAlreadyExistsException;
 import com.learnings.tech_hub.exception.ResourceNotFoundException;
 import com.learnings.tech_hub.service.UserService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.hateoas.EntityModel;
@@ -19,6 +20,9 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/users")
+@Tag(
+        name = "CRUD REST API's for user details"
+)
 public class UserController {
 
     private final UserService userService;
