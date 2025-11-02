@@ -1,4 +1,4 @@
-package com.learnings.tech_hub.dtos;
+package com.learnings.tech_hub.dto;
 
 import jakarta.validation.constraints.*;
 import lombok.Data;
@@ -9,7 +9,7 @@ import java.util.List;
 public class UserDTO {
     private Long id;
 
-    @NotEmpty(message = "Name should not be empty")
+    @NotBlank(message = "Name should not be empty")
     private String name;
 
     @Email(message = "Email should be in correct format")

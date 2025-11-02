@@ -1,13 +1,15 @@
-package com.learnings.tech_hub.entities;
+package com.learnings.tech_hub.entity;
 
 import com.learnings.tech_hub.enums.SkillLevel;
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
 @Entity
+@NoArgsConstructor
 public class JobSkill {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,4 +23,10 @@ public class JobSkill {
 
     @Enumerated(EnumType.STRING)
     private SkillLevel level;
+
+    public JobSkill(Job job, Skill skill, SkillLevel level) {
+        this.job = job;
+        this.skill = skill;
+        this.level = level;
+    }
 }

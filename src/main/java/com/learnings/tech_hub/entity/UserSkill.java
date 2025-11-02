@@ -1,13 +1,17 @@
-package com.learnings.tech_hub.entities;
+package com.learnings.tech_hub.entity;
 
 import com.learnings.tech_hub.enums.SkillLevel;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 public class UserSkill {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
